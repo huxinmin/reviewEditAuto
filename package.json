@@ -7,7 +7,8 @@
     "test": "cd ./test && node index.js",
     "clean": "rimraf lib",
     "compile": "tsc --build tsconfig.json",
-    "build": "npm run clean && npm run compile"
+    "build": "npm run clean && npm run compile",
+    "gitTest": "ts-node ./src/git/getChanged"
   },
   "repository": {
     "type": "git",
