@@ -88,6 +88,7 @@ import scan from './scan';
   */
  async function executeOnFiles(paths, min) {
      const reports = await lint.lintFiles(paths);
+     console.log('reports', reports);
      const result = [] as any[];
      const fileCount = paths.length;
      let funcCount = 0;
@@ -121,8 +122,11 @@ import scan from './scan';
   * @param {*} min 最小代码复杂度 , 大于此值不会被添加到结果
   */
 export default async function (scanParam = {}, min = 1) {
+    console.log('lint scanParam',scanParam)
 
      const files = await scan(scanParam);
+
+     console.log('lint files',files)
 
      return executeOnFiles(files, min);
  };

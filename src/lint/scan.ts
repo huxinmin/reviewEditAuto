@@ -7,7 +7,7 @@ const fs = require("fs")
 /**
  * 默认扫描扩展
  */
-const EXTENSIONS = "**/*.?(js|vue|jsx)"
+const EXTENSIONS = "**/*.?(js|ts|jsx|tsx)"
 
 /**
  * 默认忽略文件夹
@@ -25,7 +25,6 @@ const IGNORE_FILE_NAME = ".gitignore"
 const DEFAULT_PARAM = {
     rootPath: "",
     ignoreRules: [],
-    defalutIgnore: true,
     extensions: EXTENSIONS,
     ignoreFileName: IGNORE_FILE_NAME
 }
@@ -37,8 +36,9 @@ const DEFAULT_PARAM = {
  * @param {*} defalutIgnore 是否开启默认忽略
  */
 function getGlobScan(rootPath, extensions, defalutIgnore) {
+    console.log('${rootPath}/${extensions}',`${rootPath}${extensions}`)
     return new Promise(resolve => {
-        glob(`${rootPath}${extensions}`, { dot: true, ignore: defalutIgnore ? DEFAULT_IGNORE_PATTERNS : [] }, (err, files) => {
+        glob(`${rootPath}/${extensions}`, { dot: true, ignore: DEFAULT_IGNORE_PATTERNS, cwd: rootPath}, (err, files) => {
             if (err) {
                 console.log(err)
                 process.exit(1)
@@ -87,11 +87,15 @@ export default async function scan(param) {
 
     const { rootPath, extensions, defalutIgnore, ignoreRules, ignoreFileName } = param
 
+    console.log('sacn param', param);
+
     process.chdir(rootPath)
 
     const ignorePatterns = await loadIgnorePatterns(ignoreFileName)
 
     let files = await getGlobScan(rootPath, extensions, defalutIgnore)
+
+    console.log('scan files', files);
 
     return filterFilesByIgnore(files, ignorePatterns, ignoreRules)
 }
