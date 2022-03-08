@@ -82,7 +82,7 @@ function filterFilesByIgnore(files, ignorePatterns, ignoreRules, cwd = process.c
  * 执行扫描
  * @param {*} path 扫描路径 - 默认为当前路径
  */
-export default function scan(param) {
+export default async function scan(param) {
     param = Object.assign(DEFAULT_PARAM, param)
 
     const { rootPath, extensions, defalutIgnore, ignoreRules, ignoreFileName } = param

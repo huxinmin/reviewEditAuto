@@ -1,8 +1,8 @@
 import git from './';
 
-const getChanged =  async ()=> {
+const getChanged =  async (since: string)=> {
  const logs = await git.log({
-   "--since" : "2022-01-02" // 或者 2.weeks, 2 years 1 day 3 minutes ago, 2022-01-02
+   "--since" : since // 或者 2.weeks, 2 years 1 day 3 minutes ago, 2022-01-02
  })
  const first = logs.all[logs.all.length - 1].hash;
  const latest = logs.latest?.hash || '';
@@ -12,9 +12,7 @@ const getChanged =  async ()=> {
     process.exit(1)
   }
  });
- console.log(diffRes)
+ return diffRes.files.map((i)=> i.file);
 }
-
-getChanged()
 
 export default getChanged

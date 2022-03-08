@@ -3,7 +3,7 @@
  */
 
 import { ESLint } from 'eslint';
-import scan from '../scan';
+import scan from './scan';
 
  const lint = new ESLint({
      useEslintrc: true
@@ -88,7 +88,7 @@ import scan from '../scan';
   */
  async function executeOnFiles(paths, min) {
      const reports = await lint.lintFiles(paths);
-     const result = [];
+     const result = [] as any[];
      const fileCount = paths.length;
      let funcCount = 0;
      for (let i = 0; i < reports.length; i++) {
@@ -99,6 +99,7 @@ import scan from '../scan';
              if (ruleId === 'complexity') {
                  const complexity = getComplexity(message);
                  if (complexity >= min) {
+
                      result.push({
                          funcType: getFunctionType(message),
                          funcName: getFunctionName(message),
@@ -124,5 +125,4 @@ export default async function (scanParam = {}, min = 1) {
      const files = await scan(scanParam);
 
      return executeOnFiles(files, min);
-
  };

@@ -8,7 +8,7 @@
     "sourceMap": false,
     "declaration": true,
     "declarationDir": "lib",
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,

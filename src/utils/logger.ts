@@ -1,7 +1,8 @@
-import chalk from 'chalk';
-import ora from 'ora';
 import { Signale } from 'signale';
 import { table } from 'table';
+
+const chalk = require('chalk');
+const ora = require('ora');
 
 const spinner = ora('');
 
