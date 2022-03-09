@@ -34,7 +34,7 @@ module.exports = {
     "react/display-name": "off",
     complexity: [
         'error',
-        { max: 0 }
+        { max: 10 }
     ]
   }
 }

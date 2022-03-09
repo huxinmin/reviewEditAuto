@@ -1,52 +1,47 @@
 #!/usr/bin/env node
-import { TABLE_HEAD } from './constants';
 import lint from './lint';
-import genColorData from './utils/genColorData';
+import {IReviewParams} from './types';
+import hanleResult from './utils/handleResult';
 import logger from './utils/logger';
 
+async function review(param: IReviewParams) {
+  logger.loading('excuting code review...');
 
-const hanleResult = (target)=> {
-    const result = target.map(genColorData);
-    result.unshift(TABLE_HEAD);
-    return result;
-};
+  const start = Date.now();
 
-async function review (param) {
-    logger.loading('excuting code review...');
+  const {
+    min = 10, //最小代码复杂度 , 大于此值不会被添加到结果
+    rootPath = '',
+    ignoreFileName = '.gitignore',
+    ignoreRules = ['node_modules'],
+  } = param;
 
-    const start = Date.now();
+  const lintResult = await lint({
+    rootPath,
+    ignoreFileName,
+    ignoreRules,
+    min,
+  });
 
-    const {
-        min = 11,
-        rootPath = '',
-        defalutIgnore = true,
-        ignoreFileName = '.gitignore',
-        ignoreRules = ['node_modules']
-    } = param;
+  logger.stop();
 
-    const ccResult = await lint({
-        rootPath,
-        defalutIgnore,
-        ignoreFileName,
-        ignoreRules
-    }, min);
+  const {fileCount, result} = lintResult;
 
-    logger.stop();
+  logger.success(
+    `检测完成,耗费${
+      Date.now() - start
+    }ms，共检测【${fileCount}】个文件，其中可能存在问题【${result.length}】个`,
+  );
 
-    const { fileCount, funcCount, result } = ccResult;
+  if (result.length) {
+    logger.table(hanleResult(result));
+  } else {
+    logger.info('你的代码非常棒！');
+  }
 
-    logger.success(`检测完成,耗费${Date.now() - start}ms，共检测【${fileCount}】个文件，【${funcCount}】个函数，其中可能存在问题的函数【${result.length}】个`);
+  process.exit(0);
+}
 
-    if (result.length) {
-        logger.table(hanleResult(result));
-    } else {
-        logger.info('你的代码非常棒！');
-    }
+review({min: 11});
 
-    process.exit(0);
-
-};
-
-review({min:11, rootPath: process.cwd()})
-
-export default review
+export default review;

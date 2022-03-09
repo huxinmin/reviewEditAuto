@@ -1,24 +1,29 @@
-import chalk from 'chalk';
-import { INFO_COLOR, WARNING_BG_COLOR, WARNING_COLOR } from '../constants';
+import {
+  INFO_COLOR,
+  SEVERITY,
+  WARNING_BG_COLOR,
+  WARNING_COLOR,
+} from '../constants';
+import {ILintRes} from '../lint/types';
 
-function genColorData(data) {
-  const { complexity, advice, funcName, fileName, funcType, position } = data;
+const chalk = require('chalk');
+
+function genColorData(data: ILintRes) {
+  const {level, message, fileName, position} = data;
   const colorData = [] as any[];
-  if (complexity > 15) {
-      colorData.push(chalk.red(complexity));
-      colorData.push(chalk.whiteBright.bgRed.bold(`${advice}重构`));
-  } else if (complexity > 10) {
-      colorData.push(chalk.yellow(complexity));
-      colorData.push(chalk.hex(WARNING_COLOR).bgHex(WARNING_BG_COLOR).bold(`${advice}重构`));
+  if (level === SEVERITY.error) {
+    colorData.push(chalk.red(level));
+    colorData.push(chalk.whiteBright.bgRed.bold(message));
+  } else if (level === SEVERITY.warning) {
+    colorData.push(chalk.yellow(level));
+    colorData.push(
+      chalk.hex(WARNING_COLOR).bgHex(WARNING_BG_COLOR).bold(message),
+    );
   } else {
-      colorData.push(chalk.green(complexity));
-      colorData.push(chalk.green(`${advice}重构`));
+    colorData.push(chalk.green(level));
+    colorData.push(chalk.green(message));
   }
-  return colorData.concat([
-      chalk.hex(INFO_COLOR)(funcName),
-      chalk.hex(INFO_COLOR)(funcType),
-      chalk.hex(INFO_COLOR)(`${fileName} [${position}]`)
-  ]);
+  return colorData.concat([chalk.hex(INFO_COLOR)(`${fileName} [${position}]`)]);
 }
 
-export default genColorData
+export default genColorData;
