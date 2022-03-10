@@ -18,9 +18,9 @@ require nodejs version>= 16.0.0
 ```
 npm install -g review-edit-auto
 cd yourProject
-review --since 2022-03-02
+review code --since 2022-03-02
 # or
-review --since 2.weeks
+review code --since 2.weeks
 ```
 
 <img src="./img/res.jpg" width="300"  align=center>

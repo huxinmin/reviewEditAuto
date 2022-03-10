@@ -9,6 +9,10 @@ const getChanged = async (since: string): Promise<string[]> => {
   const logs = await git.log({
     '--since': since, // 或者 2.weeks, 2 years 1 day 3 minutes ago, 2022-01-02
   });
+  if (!logs.total) {
+    console.log('nothing to review');
+    process.exit(0);
+  }
   const first = logs.all[logs.all.length - 1].hash;
   const latest = logs.latest?.hash || '';
   const diffRes = await git.diffSummary([first, latest, '--stat'], (err) => {
