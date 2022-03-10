@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import lint from './lint';
-import {IReviewParams} from './types';
 import hanleResult from './utils/handleResult';
 import logger from './utils/logger';
 
-async function review(param: IReviewParams) {
+async function review(param) {
   logger.loading('excuting code review...');
 
   const start = Date.now();
@@ -14,6 +13,7 @@ async function review(param: IReviewParams) {
     rootPath = '',
     ignoreFileName = '.gitignore',
     ignoreRules = ['node_modules'],
+    since = '1.week',
   } = param;
 
   const lintResult = await lint({
@@ -21,6 +21,7 @@ async function review(param: IReviewParams) {
     ignoreFileName,
     ignoreRules,
     min,
+    since,
   });
 
   logger.stop();
@@ -28,20 +29,18 @@ async function review(param: IReviewParams) {
   const {fileCount, result} = lintResult;
 
   logger.success(
-    `检测完成,耗费${
+    `finished, takes [${
       Date.now() - start
-    }ms，共检测【${fileCount}】个文件，其中可能存在问题【${result.length}】个`,
+    }] ms, linted [${fileCount}] files, had [${result.length}] problems`,
   );
 
   if (result.length) {
     logger.table(hanleResult(result));
   } else {
-    logger.info('你的代码非常棒！');
+    logger.info('well done!');
   }
 
   process.exit(0);
 }
-
-review({min: 11});
 
 export default review;

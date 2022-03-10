@@ -9,8 +9,9 @@ import {ILintRes} from '../lint/types';
 const chalk = require('chalk');
 
 function genColorData(data: ILintRes) {
-  const {level, message, fileName, position} = data;
-  const colorData = [] as any[];
+  const {level, message, fileName, position, author} = data;
+  const colorData = [] as unknown[];
+
   if (level === SEVERITY.error) {
     colorData.push(chalk.red(level));
     colorData.push(chalk.whiteBright.bgRed.bold(message));
@@ -23,7 +24,11 @@ function genColorData(data: ILintRes) {
     colorData.push(chalk.green(level));
     colorData.push(chalk.green(message));
   }
-  return colorData.concat([chalk.hex(INFO_COLOR)(`${fileName} [${position}]`)]);
+
+  colorData.push(chalk.hex(INFO_COLOR)(`${fileName} [${position}]`));
+  colorData.push(chalk.cyan(author));
+
+  return colorData;
 }
 
 export default genColorData;

@@ -3,4 +3,5 @@ export interface IReviewParams {
   rootPath?: string;
   ignoreFileName?: string;
   ignoreRules?: string[];
+  since?: string; // 从何时开始，有2种写法：2.weeks, 2022-01-02
 }

@@ -1,13 +1,13 @@
-export const TABLE_HEAD = ['严重程度', '问题描述', '位置'];
+export const TABLE_HEAD = ['level', 'message', 'path', 'author'];
 export const INFO_COLOR = '#c0ffb3';
 export const WARNING_BG_COLOR = '#f75f00';
 export const WARNING_COLOR = '#f7e8f6';
 
 export const SEVERITY = {
-  low: '低',
-  normal: '一般',
-  warning: '警告',
-  error: '严重',
+  low: 'LOW',
+  normal: 'NORMAL',
+  warning: 'WARNING',
+  error: 'ERROR',
 };
 
 /**

@@ -22,11 +22,7 @@ export default async function scan(param: IScanParams): Promise<string[]> {
 
   const {rootPath, extensions, ignoreRules, ignoreFileName} = assignedParam;
 
-  console.log('sacn assignedParam', assignedParam);
-
-  let files = await getScanFiles(rootPath, extensions);
-
-  console.log('scan files', files);
+  const files = await getScanFiles(rootPath, extensions);
 
   return filterByIgnore(files, ignoreFileName, ignoreRules);
 }

@@ -1,9 +1,11 @@
-import yargs from 'yargs';
+#!/usr/bin/env node
 import review from './review';
 
-const pkg = require('../../package.json');
+const yargs = require('yargs');
 
-function main () {
+const pkg = require('../package.json');
+
+function main() {
   yargs.command('review', 'excute code review', {}, review);
 
   yargs.command('version', 'print version', {}, () => {
@@ -11,6 +13,6 @@ function main () {
   });
 
   yargs.argv;
-};
+}
 
 main();

@@ -5,6 +5,7 @@ export interface ILintRes {
   fileName: string;
   message: string;
   level: string;
+  author: string;
 }
 
 export interface IComplexRuleParams {
@@ -17,4 +18,11 @@ export interface IComplexRuleParams {
 
 export interface IScanParams extends IReviewParams {
   min: number;
+  since: string;
+}
+
+export interface IFilterByBlameParams {
+  line: number;
+  filePath: string;
+  since: string;
 }
