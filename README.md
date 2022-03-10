@@ -23,4 +23,4 @@ review code --since 2022-03-02
 review code --since 2.weeks
 ```
 
-<img src="./img/res.jpg" width="300"  align=center>
+<img src="./img/res.png" width="300"  align=center>
