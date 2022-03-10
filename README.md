@@ -22,3 +22,5 @@ review --since 2022-03-02
 # or
 review --since 2.weeks
 ```
+
+<img src="./img/res.jpg" width="300"  align=center>
