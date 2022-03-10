@@ -1,6 +1,6 @@
 {
   "name": "review-edit-auto",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "scan your project, only review edited code in given time-range automatic",
   "main": "lib/index.js",
   "bin": {
