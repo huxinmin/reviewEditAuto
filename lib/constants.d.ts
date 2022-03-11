@@ -4,8 +4,6 @@ export declare const WARNING_BG_COLOR = "#f75f00";
 export declare const WARNING_COLOR = "#f7e8f6";
 export declare const SEVERITY: {
     low: string;
-    normal: string;
-    warning: string;
     error: string;
 };
 /**
