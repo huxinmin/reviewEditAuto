@@ -1,8 +1,18 @@
 module.exports = {
   extends: [
-    "eslint:recommended",
+    'eslint:recommended',
     'plugin:react/recommended',
-    "plugin:@typescript-eslint/recommended"
+    'react-app',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'standard',
+    'standard-jsx',
+    'airbnb',
+    'google',
+    'plugin:security/recommended'
+  ],
+  plugins: [
+    'security'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,20 +31,20 @@ module.exports = {
   },
   settings: {
     react: {
-      version: "detect"
+      version: 'detect'
     }
   },
   rules: {
-    "react/prop-types": "off",
-    "prefer-const": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/ban-types": "off",
-    "prefer-rest-params": "off",
-    "react/display-name": "off",
+    'react/prop-types': 'off',
+    'prefer-const': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    'prefer-rest-params': 'off',
+    'react/display-name': 'off',
     complexity: [
-        'error',
-        { max: 10 }
+      'error',
+      { max: 10 }
     ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "review-edit-auto",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "scan your project, only review edited code in given time-range automatic",
   "main": "lib/index.js",
   "bin": {
@@ -47,7 +47,17 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-security": "^1.4.0",
     "rimraf": "^3.0.2"
   },
   "author": "huxinmin",
