@@ -5,9 +5,7 @@ export const WARNING_COLOR = '#f7e8f6';
 
 export const SEVERITY = {
   low: 'low',
-  normal: 'normal',
-  warning: 'warning',
-  error: 'error',
+  error: 'high',
 };
 
 /**

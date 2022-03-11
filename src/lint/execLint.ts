@@ -1,36 +1,38 @@
-import {ESLint} from 'eslint';
+import { ESLint } from 'eslint';
 import getFileName from '../utils/getFileName';
 import complexRule from './complexRule';
 import filterByBlame from './filterByBlame';
 import getLevel from './getLevel';
-import {ILintRes} from './types';
+import { ILintRes } from './types';
 
 const lint = new ESLint({
   useEslintrc: true,
 });
 
 async function execLint(
-  paths: string[],
-  min: number,
-  since: string,
-  filterLv: string,
+    paths: string[],
+    min: number,
+    since: string,
+    filterLv: string,
 ): Promise<{
   fileCount: number;
   result: ILintRes[];
 }> {
   const reports = await lint.lintFiles(paths);
   const needReports = reports.filter(
-    (report) => report.errorCount || report.warningCount,
+      (report) => report.errorCount || report.warningCount,
   );
   const result = [] as ILintRes[];
   const fileCount = paths.length;
 
-  needReports.forEach(({messages, filePath}) => {
+  needReports.forEach(({ messages, filePath }) => {
     for (let j = 0; j < messages.length; j++) {
-      const {message, ruleId, line, column, severity} = messages[j];
+      const {
+        message, ruleId, line, column, severity,
+      } = messages[j];
 
       // 过滤掉该行，不属于在指定时间内的修改
-      const blames = filterByBlame({line, filePath, since});
+      const blames = filterByBlame({ line, filePath, since });
 
       if (!blames.valid) {
         continue;
@@ -61,7 +63,7 @@ async function execLint(
     }
   });
 
-  return {fileCount, result};
+  return { fileCount, result };
 }
 
 export default execLint;

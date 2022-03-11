@@ -15,14 +15,11 @@ function genColorData(data: ILintRes) {
   if (level === SEVERITY.error) {
     colorData.push(chalk.red(level));
     colorData.push(chalk.whiteBright.bgRed.bold(message));
-  } else if (level === SEVERITY.warning) {
+  } else {
     colorData.push(chalk.yellow(level));
     colorData.push(
       chalk.hex(WARNING_COLOR).bgHex(WARNING_BG_COLOR).bold(message),
     );
-  } else {
-    colorData.push(chalk.green(level));
-    colorData.push(chalk.green(message));
   }
 
   colorData.push(chalk.hex(INFO_COLOR)(`${fileName} [${position}]`));
