@@ -1,14 +1,12 @@
-const review = require('../lib/cli/review');
-
+import review from '../src/review';
 
 async function test() {
   console.time();
   const result = await review({
-      rootPath: '',
-      extensions: '**/*.js',
-      defalutIgnore: false,
-      ignoreRules: ['node_modules', 'inner'],
-      ignoreFileName: '.ignore'
+    rootPath: '',
+    extensions: '**/*.ts',
+    ignoreRules: ['node_modules'],
+    ignoreFileName: '.ignore',
   });
   console.log(result);
   console.timeEnd();

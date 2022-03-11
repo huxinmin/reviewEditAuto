@@ -26,6 +26,12 @@ review code --since 2022-03-02
 review code --since 2.weeks
 ```
 
+you can skip some level by using `--filterLv low`, then this level logs will never show in your report.
+
+```sh
+review code --filterLv low
+```
+
 # TODO
 
 - filter level

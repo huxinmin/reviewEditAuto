@@ -12,11 +12,14 @@ export default async function (scanParam: IScanParams): Promise<{
   fileCount: number;
   result: ILintRes[];
 }> {
+  const {since, min, filterLv} = scanParam;
   const files = await scan(scanParam);
 
-  const changedFiles = await getChanged(scanParam.since);
+  const changedFiles = await getChanged(since);
 
   const needLintFiles = changedFiles.filter((i: string) => files.includes(i));
 
-  return execLint(needLintFiles, scanParam.min, scanParam.since);
+  const lintRes = await execLint(needLintFiles, min, since, filterLv);
+
+  return lintRes;
 }

@@ -1,5 +1,5 @@
 import { ILintRes } from './types';
-declare function execLint(paths: string[], min: number, since: string): Promise<{
+declare function execLint(paths: string[], min: number, since: string, filterLv: string): Promise<{
     fileCount: number;
     result: ILintRes[];
 }>;

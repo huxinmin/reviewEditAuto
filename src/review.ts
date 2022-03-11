@@ -9,11 +9,12 @@ async function review(param) {
   const start = Date.now();
 
   const {
-    min = 10, //最小代码复杂度 , 大于此值不会被添加到结果
+    min = 10, // 最小代码复杂度 , 大于此值不会被添加到结果
     rootPath = '',
     ignoreFileName = '.gitignore',
     ignoreRules = ['node_modules'],
     since = '1.week',
+    filterLv = '',
   } = param;
 
   const lintResult = await lint({
@@ -22,6 +23,7 @@ async function review(param) {
     ignoreRules,
     min,
     since,
+    filterLv,
   });
 
   logger.stop();

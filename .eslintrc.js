@@ -9,30 +9,30 @@ module.exports = {
     'standard-jsx',
     'airbnb',
     'google',
-    'plugin:security/recommended'
+    'plugin:security/recommended',
   ],
   plugins: [
-    'security'
+    'security',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   globals: {
-    __DEV__: false
+    __DEV__: false,
   },
   env: {
     node: true,
     browser: true,
-    es6: true
+    es6: true,
   },
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   rules: {
     'react/prop-types': 'off',
@@ -42,9 +42,12 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     'prefer-rest-params': 'off',
     'react/display-name': 'off',
-    complexity: [
+    'require-jsdoc': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'complexity': [
       'error',
-      { max: 10 }
-    ]
-  }
-}
+      { max: 10 },
+    ],
+  },
+};

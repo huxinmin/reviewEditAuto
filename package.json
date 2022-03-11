@@ -1,18 +1,18 @@
 {
   "name": "review-edit-auto",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "scan your project, only review edited code in given time-range automatic",
   "main": "lib/index.js",
   "bin": {
     "review": "lib/index.js"
   },
   "scripts": {
-    "test": "cd ./test && node index.js",
+    "test": "cd ./test && ts-node index.test.js",
     "clean": "rimraf lib",
     "compile": "tsc --build tsconfig.json",
     "build": "npm run clean && npm run compile",
     "prepublish": "",
-    "localTest": "ts-node ./src/index review --since 2022-0-2"
+    "localTest": "ts-node ./src/index code --since 2022-03-01 --filterLv low"
   },
   "repository": {
     "type": "git",

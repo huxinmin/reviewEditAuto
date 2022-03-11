@@ -4,4 +4,5 @@ export interface IReviewParams {
     ignoreFileName?: string;
     ignoreRules?: string[];
     since?: string;
+    filterLv?: string;
 }

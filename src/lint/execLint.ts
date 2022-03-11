@@ -13,6 +13,7 @@ async function execLint(
   paths: string[],
   min: number,
   since: string,
+  filterLv: string,
 ): Promise<{
   fileCount: number;
   result: ILintRes[];
@@ -35,27 +36,26 @@ async function execLint(
         continue;
       }
 
+      let msgLevle;
+
       if (ruleId === 'complexity') {
-        const complexity = complexRule({
+        msgLevle = complexRule({
           message,
-          line,
           min,
-          column,
-          filePath,
         });
-        if (complexity) {
-          result.push({
-            author: blames.author,
-            ...complexity,
-          });
-        }
       } else {
-        result.push({
-          position: line + ',' + column,
-          fileName: getFileName(filePath),
+        msgLevle = {
           message,
           level: getLevel(severity, false),
+        };
+      }
+
+      if (msgLevle && msgLevle?.level !== filterLv) {
+        result.push({
+          position: `${line},${column}`,
+          fileName: getFileName(filePath),
           author: blames.author,
+          ...msgLevle,
         });
       }
     }

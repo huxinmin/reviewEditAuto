@@ -4,10 +4,10 @@ export const WARNING_BG_COLOR = '#f75f00';
 export const WARNING_COLOR = '#f7e8f6';
 
 export const SEVERITY = {
-  low: 'LOW',
-  normal: 'NORMAL',
-  warning: 'WARNING',
-  error: 'ERROR',
+  low: 'low',
+  normal: 'normal',
+  warning: 'warning',
+  error: 'error',
 };
 
 /**

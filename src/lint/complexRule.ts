@@ -1,5 +1,4 @@
 import {MESSAGE_PREFIX, MESSAGE_SUFFIX} from '../constants';
-import getFileName from '../utils/getFileName';
 import getLevel from './getLevel';
 import type {IComplexRuleParams, ILintRes} from './types';
 
@@ -23,16 +22,14 @@ function getComplexity(message: string) {
 
 const complexRule = ({
   message,
-  line,
   min,
-  column,
-  filePath,
-}: IComplexRuleParams): Omit<ILintRes, 'author'> | null => {
+}: IComplexRuleParams): Omit<
+  ILintRes,
+  'author' | 'position' | 'fileName'
+> | null => {
   const complexity = getComplexity(message);
   if (complexity >= min) {
     return {
-      position: line + ',' + column,
-      fileName: getFileName(filePath),
       message: `code is too complex，complexity is ${complexity}`,
       level: getLevel(complexity, true),
     };

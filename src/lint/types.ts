@@ -10,15 +10,13 @@ export interface ILintRes {
 
 export interface IComplexRuleParams {
   message: string;
-  line: number;
   min: number;
-  column: number;
-  filePath: string;
 }
 
 export interface IScanParams extends IReviewParams {
   min: number;
   since: string;
+  filterLv: string;
 }
 
 export interface IFilterByBlameParams {
