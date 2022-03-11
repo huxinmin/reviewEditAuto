@@ -1,10 +1,10 @@
 # reviewEditAuto
 
-scan your project, only review edited code in given time-range automatic
+scan your project, only review changed code in given time-range automatic
 
 # Requirement
 
-require nodejs version>= 16.0.0
+require nodejs version>= 12.0.0
 
 # Mechanism
 
@@ -15,12 +15,20 @@ require nodejs version>= 16.0.0
 
 # Usage
 
-```
+```sh
 npm install -g review-edit-auto
 cd yourProject
+# default review in 1 week
+review code
+# you can specify time
 review code --since 2022-03-02
 # or
 review code --since 2.weeks
 ```
 
-<img src="./img/res.png" width="300"  align=center>
+# TODO
+
+- filter level
+- use custom eslintrc file
+
+<img src="./img/res.png" width="600"  align=center>
