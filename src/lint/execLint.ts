@@ -18,8 +18,10 @@ async function execLint(
   result: ILintRes[];
 }> {
   const lint = new ESLint({
-    cwd: useOutRc ? process.cwd() : path.resolve(__dirname, '../../'),
-    useEslintrc: true,
+    useEslintrc: useOutRc,
+    overrideConfigFile: useOutRc
+      ? null
+      : path.resolve(__dirname, '../../.eslintrc.js'),
   });
 
   const reports = await lint.lintFiles(paths);
