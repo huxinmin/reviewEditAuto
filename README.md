@@ -32,9 +32,11 @@ you can skip some level by using `--filterLv low`, then this level logs will nev
 review code --filterLv low
 ```
 
-# TODO
+if you want to use your own `eslintrc` file instead of default provided, you can:
 
-- filter level
-- use custom eslintrc file
+```sh
+# will find your eslint config files in your project root dir
+review code --useOutRc
+```
 
 <img src="./img/res.png" width="600"  align=center>

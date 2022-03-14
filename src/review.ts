@@ -15,6 +15,7 @@ async function review(param) {
     ignoreRules = ['node_modules'],
     since = '1.week',
     filterLv = '',
+    useOutRc = false, // use custom elintrc file
   } = param;
 
   const lintResult = await lint({
@@ -24,6 +25,7 @@ async function review(param) {
     min,
     since,
     filterLv,
+    useOutRc,
   });
 
   logger.stop();

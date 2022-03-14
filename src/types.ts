@@ -5,4 +5,5 @@ export interface IReviewParams {
   ignoreRules?: string[];
   since?: string; // 从何时开始，有2种写法：2.weeks, 2022-01-02
   filterLv?: string;
+  useOutRc?: boolean;
 }

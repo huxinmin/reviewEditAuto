@@ -17,6 +17,7 @@ export interface IScanParams extends IReviewParams {
   min: number;
   since: string;
   filterLv: string;
+  useOutRc: boolean;
 }
 
 export interface IFilterByBlameParams {

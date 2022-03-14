@@ -5,4 +5,5 @@ export interface IReviewParams {
     ignoreRules?: string[];
     since?: string;
     filterLv?: string;
+    useOutRc?: boolean;
 }

@@ -8,18 +8,16 @@ import {ILintRes, IScanParams} from './types';
  * @param {*} scanParam 扫描参数
  * @param {*} min 最小代码复杂度 , 大于此值不会被添加到结果
  */
-export default async function (scanParam: IScanParams): Promise<{
+export default async function Lint(scanParam: IScanParams): Promise<{
   fileCount: number;
   result: ILintRes[];
 }> {
-  const {since, min, filterLv} = scanParam;
+  const {since, min, filterLv, useOutRc} = scanParam;
   const files = await scan(scanParam);
 
   const changedFiles = await getChanged(since);
 
   const needLintFiles = changedFiles.filter((i: string) => files.includes(i));
 
-  const lintRes = await execLint(needLintFiles, min, since, filterLv);
-
-  return lintRes;
+  return execLint(needLintFiles, min, since, filterLv, useOutRc);
 }
