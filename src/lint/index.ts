@@ -1,7 +1,9 @@
 import getChanged from '../git/getChanged';
 import execLint from './execLint';
 import scan from './scan';
-import {ILintRes, IScanParams} from './types';
+import { ILintRes, IScanParams } from './types';
+
+const path = require('path');
 
 /**
  * 执行lint
@@ -17,7 +19,9 @@ export default async function Lint(scanParam: IScanParams): Promise<{
 
   const changedFiles = await getChanged(since);
 
-  const needLintFiles = changedFiles.filter((i: string) => files.includes(i));
+  const needLintFiles = changedFiles
+    .filter((i: string) => files.includes(i))
+    .map((i: string) => path.resolve(process.cwd(), i));
 
   return execLint(needLintFiles, min, since, filterLv, useOutRc);
 }
