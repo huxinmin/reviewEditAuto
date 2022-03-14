@@ -1,9 +1,10 @@
-import {ESLint} from 'eslint';
 import getFileName from '../utils/getFileName';
 import complexRule from './complexRule';
 import filterByBlame from './filterByBlame';
 import getLevel from './getLevel';
 import {ILintRes} from './types';
+
+const {CLIEngine} = require('eslint');
 
 const path = require('path');
 
@@ -17,14 +18,16 @@ async function execLint(
   fileCount: number;
   result: ILintRes[];
 }> {
-  const lint = new ESLint({
+  const lint = new CLIEngine({
     useEslintrc: useOutRc,
-    overrideConfigFile: useOutRc
+    resolvePluginsRelativeTo: useOutRc
       ? null
-      : path.resolve(__dirname, '../../.eslintrc.js'),
+      : path.resolve(__dirname, '../../'),
+    configFile: useOutRc ? null : path.resolve(__dirname, '../../.eslintrc.js'),
   });
 
-  const reports = await lint.lintFiles(paths);
+  const reports = lint.executeOnFiles(paths).results;
+
   const needReports = reports.filter(
     (report) => report.errorCount || report.warningCount,
   );
