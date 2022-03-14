@@ -1,8 +1,9 @@
+import {SEVERITY} from '../constants';
 import getFileName from '../utils/getFileName';
 import complexRule from './complexRule';
 import filterByBlame from './filterByBlame';
 import getLevel from './getLevel';
-import { ILintRes } from './types';
+import {ILintRes} from './types';
 
 const {CLIEngine} = require('eslint');
 
@@ -69,6 +70,8 @@ async function execLint(
       }
     }
   });
+
+  result.sort((i) => (i.level === SEVERITY.low ? 1 : -1));
 
   return {fileCount, result};
 }

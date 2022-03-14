@@ -39,6 +39,7 @@ module.exports = {
   },
   rules: {
     'react/prop-types': 'off',
+    'indent': 'warn',
     'prefer-const': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-var-requires': 'off',

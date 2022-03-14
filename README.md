@@ -39,4 +39,29 @@ if you want to use your own `eslintrc` file instead of default provided, you can
 review code --useOutRc
 ```
 
+# Rules
+
+I pick up these eslint plugins for reviewing code:
+
+- eslint-config-airbnb
+- eslint-config-google
+- eslint-config-react-app
+- eslint-config-standard
+- eslint-config-standard-jsx
+- eslint-plugin-flowtype
+- eslint-plugin-import
+- eslint-plugin-jsx-a11y
+- eslint-plugin-node
+- eslint-plugin-promise
+- eslint-plugin-react
+- eslint-plugin-react-hooks
+- eslint-plugin-security
+- eslint-plugin-sonarjs
+
+# TODO
+
+- sort
+- export to excel document
+- adjust down some rules level
+
 <img src="./img/res.png" width="600"  align=center>
