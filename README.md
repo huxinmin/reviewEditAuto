@@ -4,7 +4,7 @@ scan your project, only review changed code in given time-range automatic
 
 # Requirement
 
-require nodejs version>= 12.0.0
+require nodejs version>= 12.2.0
 
 # Mechanism
 
