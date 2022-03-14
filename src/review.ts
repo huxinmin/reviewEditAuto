@@ -39,7 +39,12 @@ async function review(param) {
   );
 
   if (result.length) {
-    logger.table(hanleResult(result));
+    logger.table(hanleResult(result), {
+      columns: {
+        1: {width: 80},
+        2: {width: 50},
+      },
+    });
   } else {
     logger.info('well done!');
   }
