@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import lint from './lint';
+import genExcel from './utils/genExcel';
 import hanleResult from './utils/handleResult';
 import logger from './utils/logger';
 
@@ -16,6 +17,7 @@ async function review(param) {
     since = '1.week',
     filterLv = '',
     useOutRc = false, // use custom elintrc file
+    exportExcel = false, // export excel
   } = param;
 
   const lintResult = await lint({
@@ -39,12 +41,15 @@ async function review(param) {
   );
 
   if (result.length) {
-    logger.table(hanleResult(result), {
+    logger.table(hanleResult(result, false), {
       columns: {
         1: {width: 80},
         2: {width: 50},
       },
     });
+    if (exportExcel) {
+      genExcel(hanleResult(result, true));
+    }
   } else {
     logger.info('well done!');
   }

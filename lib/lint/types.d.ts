@@ -5,6 +5,7 @@ export interface ILintRes {
     message: string;
     level: string;
     author: string;
+    rule: string;
 }
 export interface IComplexRuleParams {
     message: string;

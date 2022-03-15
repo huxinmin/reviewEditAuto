@@ -1,4 +1,4 @@
-export const TABLE_HEAD = ['level', 'message', 'path', 'author'];
+export const TABLE_HEAD = ['level', 'message', 'path', 'rule', 'author'];
 export const INFO_COLOR = '#c0ffb3';
 export const WARNING_BG_COLOR = '#f75f00';
 export const WARNING_COLOR = '#f7e8f6';

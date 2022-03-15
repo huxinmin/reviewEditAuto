@@ -1,6 +1,6 @@
 {
   "name": "review-edit-auto",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "description": "scan your project, only review edited code in given time-range automatic",
   "main": "lib/index.js",
   "bin": {
@@ -12,7 +12,7 @@
     "compile": "tsc --build tsconfig.json",
     "build": "npm run clean && npm run compile",
     "prepublish": "",
-    "localTest": "ts-node ./src/index code --since 2022-03-13"
+    "localTest": "ts-node ./src/index code --since 2022-03-10"
   },
   "repository": {
     "type": "git",
@@ -23,22 +23,12 @@
     "review"
   ],
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "chalk": "4.1.2",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.10.8",
     "eslint": "^7.25.0",
-    "figlet": "1.5.2",
-    "glob": "^7.2.0",
-    "ignore": "^5.2.0",
-    "ora": "5.4.1",
-    "shelljs": "^0.8.5",
-    "signale": "1.4.0",
-    "simple-git": "^3.2.6",
-    "table": "6.8.0",
-    "ts-node": "^10.7.0",
-    "yargs": "17.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-google": "^0.14.0",
     "eslint-config-react-app": "^6.0.0",
@@ -53,15 +43,26 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-sonarjs": "^0.12.0",
-    "typescript": "^4.6.2"
+    "figlet": "1.5.2",
+    "glob": "^7.2.0",
+    "ignore": "^5.2.0",
+    "ora": "5.4.1",
+    "shelljs": "^0.8.5",
+    "signale": "1.4.0",
+    "simple-git": "^3.2.6",
+    "table": "6.8.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2",
+    "xlsx": "^0.18.3",
+    "yargs": "17.3.1"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
     "@types/eslint": "^7.25.0",
     "@types/node": "^10.7.0",
     "@types/shelljs": "^0.8.11",
     "@types/signale": "^1.4.4",
-    "@types/yargs": "17.0.9"
+    "@types/yargs": "17.0.9",
+    "rimraf": "^3.0.2"
   },
   "author": "huxinmin",
   "license": "ISC",

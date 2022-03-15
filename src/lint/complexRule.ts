@@ -25,7 +25,7 @@ const complexRule = ({
   min,
 }: IComplexRuleParams): Omit<
   ILintRes,
-  'author' | 'position' | 'fileName'
+  'author' | 'position' | 'fileName' | 'rule'
 > | null => {
   const complexity = getComplexity(message);
   if (complexity >= min) {

@@ -1,3 +1,3 @@
 import { ILintRes } from '../lint/types';
-declare function genColorData(data: ILintRes): unknown[];
+declare function genColorData(data: ILintRes, isExcel: boolean): string[];
 export default genColorData;

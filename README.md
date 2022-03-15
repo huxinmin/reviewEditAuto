@@ -39,6 +39,14 @@ if you want to use your own `eslintrc` file instead of default provided, you can
 review code --useOutRc
 ```
 
+you can also export results to excel document:
+
+```sh
+review code --exportExcel
+```
+
+now you can see there are excel document file in your project dir
+
 # Rules
 
 I pick up these eslint plugins for reviewing code:
@@ -61,7 +69,7 @@ I pick up these eslint plugins for reviewing code:
 # TODO
 
 - sort
-- export to excel document
-- adjust down some rules level
+- export table to excel document
+- adjust downgrade some rules level
 
 <img src="./img/res.png" width="600"  align=center>
