@@ -31,7 +31,8 @@ async function filterByIgnore(
   const filtered = files
     .map((raw) => (path.isAbsolute(raw) ? raw : path.resolve(cwd, raw)))
     .map((raw) => path.relative(cwd, raw))
-    .filter((filePath) => !ig.ignores(filePath));
+    .filter((filePath) => !ig.ignores(filePath))
+    .map((path) => path.replaceAll('\\', '/'));
 
   return filtered;
 }
