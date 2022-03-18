@@ -1,12 +1,10 @@
-import type {IBlameFormatParams, IBlameFormatRes} from './types';
+import type {IBlameFormatRes} from './types';
 
 const shell = require('shelljs');
 
 /** 过滤出xx行代码最后一次的提交的作者和日期 */
-const blameFormat = ({start, file}: IBlameFormatParams): IBlameFormatRes => {
-  const {stdout} = shell.exec(
-    `git blame --date=short -L ${start},${start} ${file}`,
-  );
+const blameFormat = (file: string): IBlameFormatRes[] => {
+  const {stdout} = shell.exec(`git blame --date=short ${file}`);
   const regx = /[^\(\)]+(?=\))/g;
   const formatStd = stdout
     .split('\n')
@@ -21,7 +19,7 @@ const blameFormat = ({start, file}: IBlameFormatParams): IBlameFormatRes => {
       };
     });
 
-  return formatStd[0];
+  return formatStd as IBlameFormatRes[];
 };
 
 export default blameFormat;

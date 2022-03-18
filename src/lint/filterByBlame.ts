@@ -1,22 +1,18 @@
-import blameFormat from '../git/blameFormat';
 import isAfter from '../utils/isAfter';
 import {IFilterByBlameParams} from './types';
 
 const filterByBlame = ({
   line,
-  filePath,
+  blames,
   since,
-}: IFilterByBlameParams): {valid: boolean; author: string} => {
-  const blames = blameFormat({
-    start: line,
-    file: filePath,
-  });
-
-  const valid = isAfter(blames.date, since);
+}: IFilterByBlameParams): {valid: boolean; author?: string} => {
+  const validBlame = blames.find(
+    (blame) => blame.line === line && isAfter(blame.date, since),
+  );
 
   return {
-    valid,
-    author: blames.author,
+    valid: !!validBlame,
+    author: validBlame?.author,
   };
 };
 

@@ -1,3 +1,4 @@
+import {IBlameFormatRes} from '../git/types';
 import {IReviewParams} from '../types';
 
 export interface ILintRes {
@@ -23,6 +24,6 @@ export interface IScanParams extends IReviewParams {
 
 export interface IFilterByBlameParams {
   line: number;
-  filePath: string;
+  blames: IBlameFormatRes[];
   since: string;
 }

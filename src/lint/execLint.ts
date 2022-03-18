@@ -1,9 +1,10 @@
-import { SEVERITY } from '../constants';
+import {SEVERITY} from '../constants';
+import blameFormat from '../git/blameFormat';
 import getFileName from '../utils/getFileName';
 import complexRule from './complexRule';
 import filterByBlame from './filterByBlame';
 import getLevel from './getLevel';
-import { ILintRes } from './types';
+import {ILintRes} from './types';
 
 const {CLIEngine} = require('eslint');
 
@@ -36,13 +37,15 @@ async function execLint(
   const fileCount = paths.length;
 
   needReports.forEach(({messages, filePath}) => {
+    const blames = blameFormat(filePath);
+
     for (let j = 0; j < messages.length; j++) {
       const {message, ruleId, line, column, severity} = messages[j];
 
       // 过滤掉该行，不属于在指定时间内的修改
-      const blames = filterByBlame({line, filePath, since});
+      const filterBlame = filterByBlame({line, blames, since});
 
-      if (!blames.valid) {
+      if (!filterBlame.valid) {
         continue;
       }
 
@@ -64,7 +67,7 @@ async function execLint(
         result.push({
           position: `${line},${column}`,
           fileName: getFileName(filePath),
-          author: blames.author,
+          author: filterBlame.author,
           rule: ruleId,
           ...msgLevle,
         });
