@@ -1,6 +1,6 @@
 import { IFilterByBlameParams } from './types';
-declare const filterByBlame: ({ line, filePath, since, }: IFilterByBlameParams) => {
+declare const filterByBlame: ({ line, blames, since, }: IFilterByBlameParams) => {
     valid: boolean;
-    author: string;
+    author?: string;
 };
 export default filterByBlame;

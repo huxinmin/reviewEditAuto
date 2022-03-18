@@ -72,4 +72,4 @@ I pick up these eslint plugins for reviewing code:
 - export table to excel document
 - adjust downgrade some rules level
 
-<img src="./img/res.png" width="600"  align=center>
+<img src="./img/res.png" width="700"  align=center>

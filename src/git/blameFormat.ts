@@ -11,7 +11,8 @@ const blameFormat = (file: string): IBlameFormatRes[] => {
     .map((i: string) => i.match(regx))
     .filter(Boolean)
     .map((i: string[]) => {
-      const arr = i[0].split(' ');
+      const arr = i[0].split(' ').filter(Boolean);
+
       return {
         author: arr[0],
         date: arr[1],
